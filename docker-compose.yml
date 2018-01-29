@@ -1,0 +1,32 @@
+services:
+  static002:
+    deploy:
+      mode: replicated
+      replicas: 1 
+      restart_policy:
+        condition: any
+      update_config:
+        failure_action: continue
+    image: registry.cn-qingdao.aliyuncs.com/liteapp/sf:0.0.2
+    environment:
+      - reschedule:on-node-failure
+    healthcheck:
+      interval: 60s
+      retries: 3
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://localhost:90/wohnJfBeqy.txt
+      timeout: 3s
+    labels:
+      aliyun.auto_scaling.max_cpu: "50"
+      aliyun.auto_scaling.max_instances: "10"
+      aliyun.auto_scaling.min_cpu: "18"
+      aliyun.auto_scaling.min_instances: "1"
+      aliyun.auto_scaling.step: "1"
+      aliyun.routing.port_90: http://redtask.yodamob.cn/wohnJfBeqy.txt
+    ports:
+    - 90/tcp
+version: "3.2"
+
