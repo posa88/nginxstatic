@@ -78,12 +78,12 @@
 
         var sendTrack = function() {
 
-
+            console.log("fasgsag!")
             if (urls.length == 0) {
 
                 var xhr = new XMLHttpRequest();
                 _hmt.push(['_trackEvent', yodaslotid, 'req'])
-                xhr.open('GET', 'http://track.yodamob.com/st/v1/ruo?os=ios&num=100&slotid=' + yodaslotid);
+                xhr.open('GET', 'https://track.yodamob.com/st/v1/ruo?os=ios&num=100&slotid=' + yodaslotid);
                 xhr.send();
                 xhr.onreadystatechange = function() {
 
